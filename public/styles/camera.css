@@ -1,4 +1,4 @@
-
+/* 
  
  body {
      background-image: url(http://vantruckservice.it/wp-content/uploads/2017/09/Light-Grey-Gradient-Background-3-1.jpg);
@@ -86,8 +86,16 @@
 
 
 .fa-images {
+    all: unset;
     position: absolute;
     left: 20px;
+    color: white;
+}
+
+.fa-camera {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
     color: white;
 }
 
@@ -145,45 +153,6 @@
 
 #github-button{
     display: inline;
-}
+} */
 
 /* LOGIN */
-
-
-.select-login {
-    width: 300px;
-    height: 100px;
-    padding: 20px;
-    position: absolute;
-    top: 49%;
-    left: 50%;
-    margin: 160px 0 0 -85px;
-    color: #B3BCC4;
-}
-
-.action-buttons {
-    width: 60%;
-    height: 50%;
-    padding: 20px;
-    position: absolute;
-    top: 49%;
-    left: 50%;
-    margin: -80px 0 0 -220px;
-}
-
-
-#camera-button {
-    display: inline;
-}
-
-#images-button{
-    display: inline;
-}
-
-#profile-button{
-    display: inline;
-}
-
-#signout-button{
-    display: inline;
-}

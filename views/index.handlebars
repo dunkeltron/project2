@@ -1,58 +1,65 @@
-<a href="camera">link text</a>
+<a href="menu">link text</a>
 
+<html>
+  <header>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.rawgit.com/oauth-io/oauth-js/c5af4519/dist/oauth.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.12.0/bootstrap-social.min.css">
+    <link rel="stylesheet" href="/styles/login.css" media="screen" title="no title" charset="utf-8">
+  </header>
 
+  <body>
 
-<div class="materialContainer">
+      <div class="login-buttons">
+        <div id="facebook-button">
+            <span style="font-size:100px; color:#334E8C;">
+                <i class="fa fa-facebook-square"></i>
+            </span>
+        </div>
+        <div id="google-button">
+            <span style="font-size:100px; color:#D82523;">
+                <i class="fa fa-google-plus-square"></i>
+            </span>
+        </div>
+        <div id="twitter-button">
+            <span style="font-size:100px; color:#519FD8;">
+                <i class="fa fa-twitter-square"></i>
+            </span>
+        </div>
+        <div id="github-button">
+            <span style="font-size:100px; color:#2E2C2C;">
+                <i class="fa fa-github-square"></i>
+            </span>
+        </div>
+    </div>
 
-   <div class="box">
+    <div class="select-login">
+        CHOOSE A LOGIN
+    </div>
 
-      <div class="title">LOGIN</div>
-
-      <div class="input">
-         <label for="name">Username</label>
-         <input type="text" name="name" id="name">
-         <span class="spin"></span>
-      </div>
-
-      <div class="input">
-         <label for="pass">Password</label>
-         <input type="password" name="pass" id="pass">
-         <span class="spin"></span>
-      </div>
-
-      <div class="button login">
-         <button><span>GO</span> <i class="fa fa-check"></i></button>
-      </div>
-   </div>
-
-   <div class="overbox">
-      <div class="material-button alt-2"><span class="shape"></span></div>
-
-      <div class="title">REGISTER</div>
-
-      <div class="input">
-         <label for="regname">Username</label>
-         <input type="text" name="regname" id="regname">
-         <span class="spin"></span>
-      </div>
-
-      <div class="input">
-         <label for="regpass">Password</label>
-         <input type="password" name="regpass" id="regpass">
-         <span class="spin"></span>
-      </div>
-
-      <div class="input">
-         <label for="reregpass">Repeat Password</label>
-         <input type="password" name="reregpass" id="reregpass">
-         <span class="spin"></span>
-      </div>
-
-      <div class="button">
-         <button><span>SUBMIT</span></button>
-      </div>
-
-
-   </div>
-
-</div>
+    <script>
+      $('#facebook-button').on('click', function() {
+        // Initialize with your OAuth.io app public key
+        OAuth.initialize('vjlnKXXv_pB-M71yxzZp5Z5hB-k');
+        // Use popup for oauth
+        OAuth.popup('facebook').then(facebook => {
+          console.log('facebook:',facebook);
+          // Prompts 'welcome' message with User's email on successful login
+          // #me() is a convenient method to retrieve user data without requiring you
+          // to know which OAuth provider url to call
+          facebook.me().then(data => {
+            console.log('me data:', data);
+            alert('Facebook says your email is:' + data.email + ".\nView browser 'Console Log' for more details");
+          })
+          // Retrieves user data from OAuth provider by using #get() and
+          // OAuth provider url
+          facebook.get('/v2.5/me?fields=name,first_name,last_name,email,gender,location,locale,work,languages,birthday,relationship_status,hometown,picture').then(data => {
+            console.log('self data:', data);
+          })
+        });
+      })
+    </script>
+  </body>
+</html>
