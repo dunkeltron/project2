@@ -20,6 +20,24 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/profile", function(req, res) {
+    db.Example.findAll({}).then(function(dbExamples) {
+      res.render("profile", {
+        msg: "Welcome!",
+        examples: dbExamples
+      });
+    });
+  });
+
+  app.get("/menu", function(req, res) {
+    db.Example.findAll({}).then(function(dbExamples) {
+      res.render("menu", {
+        msg: "Welcome!",
+        examples: dbExamples
+      });
+    });
+  });
+
 
   app.get("/camera", function(req, res) {
     db.Example.findAll({}).then(function(dbExamples) {
