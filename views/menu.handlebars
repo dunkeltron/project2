@@ -2,6 +2,8 @@
 
 <header>
     <link rel="stylesheet" href="/styles/main.css" media="screen" title="no title" charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.rawgit.com/oauth-io/oauth-js/c5af4519/dist/oauth.js"></script>
 </header>
 
 <div id="nav-footer">
@@ -70,12 +72,14 @@
             <h3>Kygo | SoDo Box Office</h3>
         </div>
     </div>
-
-
-
-
-
-</div>
-
+    <script>
+        if(localStorage.length===1){
+            window.location.href= "/";
+        }
+        $(".signout-button").on("click",function(event){
+            localStorage.clear();
+        })
+    </script>
+</body>
 
 </html>
