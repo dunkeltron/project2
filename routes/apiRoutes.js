@@ -7,6 +7,11 @@ module.exports = function(app) {
       res.json(dbExamples);
     });
   });
+  app.get("/api/users/:id", function(req, res) {
+    db.User.findOne({where: { userId : req.params.id } }).then(function(dbExamples) {
+      res.json(dbExamples);
+    });
+  });
 
   // Create a new user
   app.post("/api/users", function(req, res) {
@@ -15,6 +20,11 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/api/photos", function(req,res){
+    db.Photo.create(req.body).then(function(dbExample){
+      res.json(dbExample);
+    });
+  });
   // Delete an user by id
   app.delete("/api/user/:ids", function(req, res) {
     db.User.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
