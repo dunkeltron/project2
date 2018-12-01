@@ -76,6 +76,9 @@
         if(localStorage.length===1){
             window.location.href= "/";
         }
+        $(".signout-button").on("click",function(event){
+            localStorage.clear();
+        })
     </script>
 </body>
 

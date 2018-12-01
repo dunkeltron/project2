@@ -21,13 +21,13 @@ $(document).ready(function () {
     },
     getExamples: function () {
       return $.ajax({
-        url: "api/user",
+        url: "api/users",
         type: "GET"
       });
     },
     deleteExample: function (id) {
       return $.ajax({
-        url: "api/user/" + id,
+        url: "api/users/" + id,
         type: "DELETE"
       });
     }
@@ -110,7 +110,7 @@ $(document).ready(function () {
       // to know which OAuth provider url to call
       facebook.me().then(data => {
         console.log('me data:', data);
-        alert('Facebook says your name is: ' + data.name + ".\nView browser 'Console Log' for more details");
+        //alert('Facebook says your name is: ' + data.name + ".\nView browser 'Console Log' for more details");
         newUser = {
           userName: data.name,
           password: "test"
@@ -135,7 +135,7 @@ $(document).ready(function () {
       //   // to know which OAuth provider url to call
       google.me().then(data => {
         console.log('me data:', data);
-        alert('Google says your email is:' + data.name + ".\nView browser 'Console Log' for more details");
+        //alert('Google says your email is:' + data.name + ".\nView browser 'Console Log' for more details");
         newUser = {
           userName: data.name,
           password: "test"
@@ -161,7 +161,7 @@ $(document).ready(function () {
       // to know which OAuth provider url to call
       twitter.me().then(data => {
         console.log('me data:', data);
-        alert('Twitter says your name is:' + data.name + ".\nView browser 'Console Log' for more details");
+        //alert('Twitter says your name is:' + data.name + ".\nView browser 'Console Log' for more details");
         newUser = {
           userName: data.name,
           password: "test"
