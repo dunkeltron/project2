@@ -1,21 +1,22 @@
 $(document).ready(function () {
+  
   // Get references to page elements
   var $exampleText = $("#example-text");
   var $exampleDescription = $("#example-description");
   var $submitBtn = $("#submit");
   var $exampleList = $("#example-list");
-  var newUser;
+  var newUser ={userName:"",password:""};
 
   // The API object contains methods for each kind of request we'll make
   var API = {
-    saveExample: function (example) {
+    saveUser: function (user) {
       return $.ajax({
         headers: {
           "Content-Type": "application/json"
         },
         type: "POST",
-        url: "api/user",
-        data: JSON.stringify(example)
+        url: "api/users",
+        data: JSON.stringify(user)
       });
     },
     getExamples: function () {
@@ -89,31 +90,36 @@ $(document).ready(function () {
 
   //Log in with Facebook//
   $('#facebook-button').on('click', function () {
+    OAuth.clearCache();
+    console.log(User.getIdentity());
     // Initialize with your OAuth.io app public key
     OAuth.initialize('vjlnKXXv_pB-M71yxzZp5Z5hB-k');
     // Use popup for oauth
-    OAuth.popup('facebook').then(facebook => {
+    OAuth.popup('facebook',{cache:true}).then(facebook => {
       console.log('facebook:', facebook);
+
+      // Retrieves user data from OAuth provider by using #get() and
+      // OAuth provider url
+      // --need to fix permissions to get location data--//
+      // facebook.get('/v2.5/me?fields=name,first_name,last_name,email,gender,location,locale,work,languages,birthday,relationship_status,hometown,picture').then(data => {
+      //   console.log('self data:', data);
+        
+      // });
       // Prompts 'welcome' message with User's email on successful login
       // #me() is a convenient method to retrieve user data without requiring you
       // to know which OAuth provider url to call
       facebook.me().then(data => {
         console.log('me data:', data);
-        alert('Facebook says your name is:' + data.name + ".\nView browser 'Console Log' for more details");
+        alert('Facebook says your name is: ' + data.name + ".\nView browser 'Console Log' for more details");
         newUser = {
           userName: data.name,
           password: "test"
         };
-        addUser(newUser);
+        API.saveUser(newUser);
+        loadMenu();
       })
-      // Retrieves user data from OAuth provider by using #get() and
-      // OAuth provider url
-      // facebook.get('/v2.5/me?fields=name,first_name,last_name,email,gender,location,locale,work,languages,birthday,relationship_status,hometown,picture').then(data => {
-      //   console.log('self data:', data);
-        
-      // })
+      
     });
-    console.log(newUser.userName, " in facebook button");
   });
   $('#google-button').on('click', function () {
     console.log("google clicked");
@@ -121,36 +127,33 @@ $(document).ready(function () {
     OAuth.initialize('vjlnKXXv_pB-M71yxzZp5Z5hB-k')
 
     // // Use popup for oauth
-    OAuth.popup('google_plus').then(google => {
+    OAuth.popup('google_plus',{cache:true}).then(google => {
       console.log('google:', google);
       //   // Prompts 'welcome' message with User's email on successful login
       //   // #me() is a convenient method to retrieve user data without requiring you
       //   // to know which OAuth provider url to call
       google.me().then(data => {
         console.log('me data:', data);
-        alert('Google says your email is:' + data + ".\nView browser 'Console Log' for more details");
+        alert('Google says your email is:' + data.name + ".\nView browser 'Console Log' for more details");
         newUser = {
           userName: data.name,
           password: "test"
         };
-        addUser(newUser);
-      });
-      //   // Retrieves user data from OAuth provider by using #get() and
-      //   // OAuth provider url
-      //google.get('/v2.5/me?fields=name,first_name,last_name,email,gender,location,locale,work,languages,birthday,relationship_status,hometown,picture').then(data => {
-      //    console.log('self data:', data);
-      //})
+        API.saveUser(newUser);
+        loadMenu();
+       });
     });
   });
 
   //Log in with Twitter
   $('#twitter-button').on('click', function () {
+    console.log(JSON.stringify(document.cookie));
     console.log("twitter clicked");
     // Initialize with your OAuth.io app public key
     OAuth.initialize('vjlnKXXv_pB-M71yxzZp5Z5hB-k');
 
     // Use popup for oauth
-    OAuth.popup('twitter').then(twitter => {
+    OAuth.popup('twitter',{cache:true}).then(twitter => {
       console.log('twitter:', twitter);
       // Prompts 'welcome' message with User's email on successful login
       // #me() is a convenient method to retrieve user data without requiring you
@@ -162,23 +165,19 @@ $(document).ready(function () {
           userName: data.name,
           password: "test"
         };
-        addUser(newUser);
+        //save the user to sql database in user table.
+        API.saveUser(newUser);
+        loadMenu();
       })
     });
-    loadMenu();
   });
 
 });
 
+//sets the windows.location.href to /menu to navigate to the menu
 function loadMenu() {
-  $.get("/menu", {
-    type: "GET"
-  });
+  window.location.href = "/menu";  
 
 }
 
-function addUser(user) {
-  $.post("/api/users/", user, function () {
-    window.location.href = "/menu";
-  });
-}
+
