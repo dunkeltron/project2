@@ -19,6 +19,12 @@ $(document).ready(function () {
         data: JSON.stringify(user)
       });
     },
+    getUser: function(id){
+      return $.ajax({
+        url:"api/users/"+id,
+        type:"GET"
+      }); 
+    },
     getExamples: function () {
       return $.ajax({
         url: "api/users",
@@ -86,14 +92,14 @@ $(document).ready(function () {
   };
 
 
+    // Initialize with your OAuth.io app public key
+    OAuth.initialize('vjlnKXXv_pB-M71yxzZp5Z5hB-k');
   //LOGIN//
 
   //Log in with Facebook//
   $('#facebook-button').on('click', function () {
+    //make sure cache is clear before logging in with facebook
     OAuth.clearCache();
-    console.log(User.getIdentity());
-    // Initialize with your OAuth.io app public key
-    OAuth.initialize('vjlnKXXv_pB-M71yxzZp5Z5hB-k');
     // Use popup for oauth
     OAuth.popup('facebook',{cache:true}).then(facebook => {
       console.log('facebook:', facebook);
@@ -113,19 +119,20 @@ $(document).ready(function () {
         //alert('Facebook says your name is: ' + data.name + ".\nView browser 'Console Log' for more details");
         newUser = {
           userName: data.name,
-          password: "test"
+          userId: data.id,
+          provider: "facebook"
         };
-        API.saveUser(newUser);
+        if(API.getUser(newUser.userId)===null){
+          API.saveUser(newUser);
+        }
         loadMenu();
       })
       
     });
   });
   $('#google-button').on('click', function () {
-    console.log("google clicked");
+    //make sure cache is clear before logging in with google
     OAuth.clearCache();
-    // Initialize with your OAuth.io app public key
-    OAuth.initialize('vjlnKXXv_pB-M71yxzZp5Z5hB-k')
 
     // // Use popup for oauth
     OAuth.popup('google_plus',{cache:true}).then(google => {
@@ -138,9 +145,12 @@ $(document).ready(function () {
         //alert('Google says your email is:' + data.name + ".\nView browser 'Console Log' for more details");
         newUser = {
           userName: data.name,
-          password: "test"
+          userId: data.id,
+          provider:"google"
         };
-        API.saveUser(newUser);
+        if(API.getUser(newUser.userId)===null){
+          API.saveUser(newUser);
+        }
         loadMenu();
        });
     });
@@ -148,10 +158,8 @@ $(document).ready(function () {
 
   //Log in with Twitter
   $('#twitter-button').on('click', function () {
-    console.log("twitter clicked");
+    //make sure to clear cahce before logging in with twitter
     OAuth.clearCache();
-    // Initialize with your OAuth.io app public key
-    OAuth.initialize('vjlnKXXv_pB-M71yxzZp5Z5hB-k');
 
     // Use popup for oauth
     OAuth.popup('twitter',{cache:true}).then(twitter => {
@@ -164,10 +172,13 @@ $(document).ready(function () {
         //alert('Twitter says your name is:' + data.name + ".\nView browser 'Console Log' for more details");
         newUser = {
           userName: data.name,
-          password: "test"
+          userId: data.id,
+          provider:"twitter"
         };
         //save the user to sql database in user table.
-        API.saveUser(newUser);
+        if(API.getUser(newUser.userId)===null){
+          API.saveUser(newUser);
+        }
         loadMenu();
       })
     });
