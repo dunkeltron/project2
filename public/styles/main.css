@@ -1,12 +1,13 @@
 
  
  body {
-     background-image: url(http://vantruckservice.it/wp-content/uploads/2017/09/Light-Grey-Gradient-Background-3-1.jpg);
-      background-position: center;
+    background-color: #FFFEE6;
+    background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 100vh;
     font-family: 'Roboto', sans-serif;
+    ;
  }
  
  body,
@@ -14,86 +15,23 @@
     overflow: hidden;
  }
  
- .materialContainer {
-    width: 100%;
-    max-width: 460px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
- }
- 
- *,
- *:after,
- *::before {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    list-style-type: none;
-    outline: none;
- }
 
- .photos {
-     position: absolute;
-     top: 20px;
-     left: 20px;
- }
-
-
-.card-columns {
-    margin: 0 auto;
-    margin-top: 30px;
-     width: 93%; 
-     background-color: none;
+h1 {
+    font-size: 150px;
+    color: #95DAE5;
 }
 
-.card {
-    background: none;
-    border: none;
+a {
+    color: inherit;
 }
 
-.card-img {
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
-}
-
-
-
-.fa-arrow-circle-down {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    color:white;
-    background-color: none;
-    width: 40px;
-    height: 40px;
-}
-
-.fa-chevron-circle-left {
-    position: absolute;
-    bottom: 2%;
-    left: 3.5%;
-    color: white;
-    background-color: none;
-}
-
-
-
-.fa-images {
-    position: absolute;
-    left: 20px;
-    color: white;
+#title {
+    color: #538CA9;
 }
 
 
 .login-buttons {
-    width: 300px;
+
     height: 100px;
     padding: 20px;
   
@@ -101,42 +39,41 @@
     top: 49%;
     left: 50%;
   
-    margin: -120px 0 0 -120px;
+    margin: 140px 0 0 -115px;
 }
 
-.select-login {
+.select-login{
     width: 300px;
     height: 100px;
     padding: 20px;
     position: absolute;
     top: 49%;
     left: 50%;
-    margin: 160px 0 0 -85px;
-    color: #B3BCC4;
+    margin: 230px 0 0 -80px;
+    color: #538CA9;
 }
-.select-login:hover {
+
+#logo {
     width: 300px;
     height: 100px;
     padding: 20px;
     position: absolute;
     top: 49%;
     left: 50%;
-    margin: 160px 0 0 -85px;
-    color: #B3BCC4;
+    margin: -260px 0 0 -120px;
+    color: #538CA9;
 }
 
 
 #google-button {
     display: inline;
+    margin-right: 20px;
 }
 
-#google-button:hover {
-    display: inline;
-    color: #B3BCC4;
-}
 
 #facebook-button{
     display: inline;
+    margin-right: 20px;
 }
 
 #twitter-button{
@@ -149,18 +86,6 @@
 
 /* LOGIN */
 
-
-.select-login {
-    width: 300px;
-    height: 100px;
-    padding: 20px;
-    position: absolute;
-    top: 49%;
-    left: 50%;
-    margin: 160px 0 0 -85px;
-    color: #B3BCC4;
-}
-
 .action-buttons {
     width: 60%;
     height: 50%;
@@ -171,19 +96,88 @@
     margin: -80px 0 0 -220px;
 }
 
+#nav-footer {
+    background-color: #95DAE5;
+    padding: 15px;
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    border-top-style: solid;
+    border-top-width: 4px;
+    border-top-color: #538CA9;
+    box-shadow: 0 -4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    z-index: 5;
+}
 
-#camera-button {
+.images-button {
+    display: inline;
+    color: #538CA9;
+    font-size: 40px;
+    margin-right: 5px;
+}
+
+.profile-button{
+    display: inline;
+    color: #538CA9;
+    font-size: 40px;
+    margin-right: 5px;
+}
+
+.camera-button{
+    display: inline;
+    color: #538CA9;
+    font-size: 40px;
+}
+
+.signout-button{
+    display: inline;
+    position: absolute;
+    right: 20px;
+    color: #538CA9;
+    font-size: 40px;
+}
+
+#events-nav {
+    margin: auto;
+    width: 90%;
+    border-radius: 10px;
+}
+
+.event-menu-title {
+    font-size: 25px;
+    color: white;
+    background-color: #3A2412;
+    padding: 15px;
+    width: 100%;
+    z-index: 4;
+    text-align: center;
+    box-shadow: 0 -4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.events-list {
+    top: 50px;
+    position: relative;
+    margin-bottom: 10px; 
+    width: fit-content;
+}
+
+.event-name {
+    margin-left: 60px;
+    background-color: #538CA9;
+    padding: 15px;
+    border-top-right-radius: 10px;
+    border-radius: 10px;
+    color: white;
+}
+
+h3 {
     display: inline;
 }
 
-#images-button{
-    display: inline;
-}
-
-#profile-button{
-    display: inline;
-}
-
-#signout-button{
-    display: inline;
+.fa-plus-square {
+   position: absolute;
+   left: 15px;
+   top: 4px;
+   border-radius: 50px;
+   color: #CED4D8
 }
