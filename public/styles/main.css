@@ -5,10 +5,38 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 100vh;
     font-family: 'Roboto', sans-serif;
-    ;
+    z-index: -2;
+    overflow-x: hidden;
+  overflow-y: scroll;
  }
+
+
+
+ .card-columns {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 55px;
+     width: 95%;
+     padding-top: 30px;
+     overflow-x: auto;
+     z-index: 0;
+     height: 100%;
+     
+}
+
+.card {
+    background: none;
+    border: none;
+}
+
+.card-img {
+    border-radius: 10px;
+
+}
+
+
  
  body,
  html {
@@ -98,7 +126,7 @@ a {
 
 #nav-footer {
     background-color: #95DAE5;
-    padding: 15px;
+    padding: 20px;
     position: absolute;
     width: 100%;
     bottom: 0px;
@@ -116,23 +144,47 @@ a {
     margin-right: 5px;
 }
 
-.profile-button{
+.events-button {
     display: inline;
     color: #538CA9;
     font-size: 40px;
     margin-right: 5px;
 }
 
-.camera-button{
+.profile-button{
     display: inline;
     color: #538CA9;
     font-size: 40px;
+    margin-left: 10px;
+    z-index: 10;
+}
+
+
+
+.camera-button{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    color: #95DAE5;
+    font-size: 50px;
+    border-radius: 60px;
+    background-color: #538CA9;
+    bottom: 30px;
+    z-index: 8;
+    padding: 20px;
+    width: fit-content;
+    margin-left:auto;
+    margin-right: auto;
+    box-shadow: 0 -4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 
 .signout-button{
     display: inline;
     position: absolute;
-    right: 20px;
+    right: 30px;
     color: #538CA9;
     font-size: 40px;
 }
@@ -151,7 +203,7 @@ a {
     width: 100%;
     z-index: 4;
     text-align: center;
-    box-shadow: 0 -4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .events-list {
@@ -180,4 +232,14 @@ h3 {
    top: 4px;
    border-radius: 50px;
    color: #CED4D8
+}
+
+.fa-arrow-circle-down {
+    font-size: 40px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: #95DAE5;
+    padding: 0px;
+    margin: 0px;
 }
