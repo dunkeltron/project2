@@ -6,54 +6,76 @@
     <script src="https://cdn.rawgit.com/oauth-io/oauth-js/c5af4519/dist/oauth.js"></script>
 </header>
 
-<body>
-    <div class="action-buttons">
-        
-        <div id="camera-button">
-            <span style="font-size:80px; color:#3C3C3C;">
-                <a href="camera" style="text-decorations:none; color:inherit;"><i class="fa fa-camera"></i></a>
-            </span>
+<div id="nav-footer">
+    <div class="icons">
+        <div class="images-button">
+            <a href="photos" style="text-decorations:none; color:inherit;"><i class="fa fa-image"></i></a>
         </div>
-        
-        <div id="images-button">
-            <span style="font-size:80px; color:#4B4B4B;">
-                <a href="photos" style="text-decorations:none; color:inherit;"><i class="fa fa-image"></i></a>
-            </span>
+        <div class="profile-button">
+            <a href="profile" style="text-decorations:none; color:inherit;"><i class="fa fa-user"></i></a>
         </div>
-        
-        <div id="profile-button">
-            <span style="font-size:100px; color:#5B5B5B;">
-                <a href="profile" style="text-decorations:none; color:inherit;"><i class="fa fa-user"></i></a>
-            </span>
+        {{!-- <div class="camera-button">
+            <a href="camera" style="text-decorations:none; color:inherit;"><i class="fa fa-camera"></i></a>
+        </div> --}}
+        <div class="signout-button">
+            <a href="/" style="text-decorations:none; color:inherit;"><i class="fa fa-sign-out"></i></a>
         </div>
-        
-        <div id="signout-button">
-            <span style="font-size:90px; color:#6C6C6C;">
-                <a href="/" style="text-decorations:none; color:inherit;"><i class="fa fa-sign-out"></i></a>
-            </span>
-        </div>
+    </div>
+</div>
+
+  <div class="event-menu-title">
+        <h2>Events in 'Seattle'</h2>
+    </div>
+
+<div id="events-nav">
     
+    <div class="events-list">
+        <div class="event-name">
+             <div class="add-event">
+                 <span style="font-size: 40px;">
+            <i class="fa fa-plus-square"></i>
+            </span>
+        </div>
+            <h3>Artist | Venue</h3>
+        </div>
+    </div>
+
+    <div class="events-list">
+        <div class="event-name">
+             <div class="add-event">
+                 <span style="font-size: 40px;">
+            <i class="fa fa-plus-square"></i>
+            </span>
+        </div>
+            <h3>The Killers | WAMU Theatre</h3>
+        </div>
+    </div>
+
+    <div class="events-list">
+        <div class="event-name">
+             <div class="add-event">
+                 <span style="font-size: 40px;">
+            <i class="fa fa-plus-square"></i>
+            </span>
+        </div>
+            <h3>Beyonce | Century Link Field</h3>
+        </div>
+    </div>
+
+    <div class="events-list">
+        <div class="event-name">
+             <div class="add-event">
+                 <span style="font-size: 40px;">
+            <i class="fa fa-plus-square"></i>
+            </span>
+        </div>
+            <h3>Kygo | SoDo Box Office</h3>
+        </div>
     </div>
     <script>
-        var user={};
-        // Initialize with your OAuth.io app public key
-    OAuth.initialize('vjlnKXXv_pB-M71yxzZp5Z5hB-k');
-    console.log(User.getIdentity());
-    // // Use popup for oauth
-    OAuth.popup('google_plus',{cache:true}).then(google => {
-      console.log('google:', google);
-      //   // Prompts 'welcome' message with User's email on successful login
-      //   // #me() is a convenient method to retrieve user data without requiring you
-      //   // to know which OAuth provider url to call
-      google.me().then(data => {
-        console.log('me data:', data);
-        user = data;
-        console.log("in googe.me",user);
-       });
-       
-    }).then(element =>{
-        console.log("out of google.me",user);
-    });
+        if(localStorage.length===1){
+            window.location.href= "/";
+        }
     </script>
 </body>
 

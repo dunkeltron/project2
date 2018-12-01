@@ -123,6 +123,7 @@ $(document).ready(function () {
   });
   $('#google-button').on('click', function () {
     console.log("google clicked");
+    OAuth.clearCache();
     // Initialize with your OAuth.io app public key
     OAuth.initialize('vjlnKXXv_pB-M71yxzZp5Z5hB-k')
 
@@ -147,8 +148,8 @@ $(document).ready(function () {
 
   //Log in with Twitter
   $('#twitter-button').on('click', function () {
-    console.log(JSON.stringify(document.cookie));
     console.log("twitter clicked");
+    OAuth.clearCache();
     // Initialize with your OAuth.io app public key
     OAuth.initialize('vjlnKXXv_pB-M71yxzZp5Z5hB-k');
 
