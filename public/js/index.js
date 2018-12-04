@@ -97,121 +97,44 @@ $(document).ready(function () {
 
   // Initialize with your OAuth.io app public key
   OAuth.initialize('vjlnKXXv_pB-M71yxzZp5Z5hB-k');
+
   //LOGIN//
-
-  //Log in with Facebook//
-  // $('#facebook-button').on('click', function () {
-  //   //make sure cache is clear before logging in with facebook
-  //   // Use popup for oauth
-  //   OAuth.popup('facebook',{cache:true}).then(facebook => {
-  //     console.log('facebook:', facebook.toJson());
-  //     User.signup(facebook).done((user) => {
-  //       console.log(user.data.firstname);
-  //     }).fail((err => {
-  //       // email/password incorrect.
-  //     }));
-  //     console.log("no Crash");
-  //     // Retrieves user data from OAuth provider by using #get() and
-  //     // OAuth provider url
-  //     // --need to fix permissions to get location data--//
-  //     // facebook.get('/v2.5/me?fields=name,first_name,last_name,email,gender,location,locale,work,languages,birthday,relationship_status,hometown,picture').then(data => {
-  //     //   console.log('self data:', data);
-
-  //     // });
-  //     // Prompts 'welcome' message with User's email on successful login
-  //     // #me() is a convenient method to retrieve user data without requiring you
-  //     // to know which OAuth provider url to call
-
-  //     // facebook.me().then(data => {
-  //     //   console.log('me data:', data);
-  //     //   //alert('Facebook says your name is: ' + data.name + ".\nView browser 'Console Log' for more details");
-  //     //   newUser = {
-  //     //     userName: data.name,
-  //     //     userId: data.id,
-  //     //     provider: "facebook"
-  //     //   };
-  //     //   if(API.getUser(newUser.userId)===null){
-  //     //     API.saveUser(newUser);
-  //     //   }
-  //     //   loadMenu();
-  //     // })
-
-  //   });
-  // });
-  // $('#google-button').on('click', function () {
-  //   //make sure cache is clear before logging in with google
-  //   OAuth.clearCache();
-
-  //   // // Use popup for oauth
-  //   OAuth.popup('google_plus',{cache:true}).then(google => {
-  //     console.log('google:', google);
-  //     //   // Prompts 'welcome' message with User's email on successful login
-  //     //   // #me() is a convenient method to retrieve user data without requiring you
-  //     //   // to know which OAuth provider url to call
-  //     google.me().then(data => {
-  //       console.log('me data:', data);
-  //       //alert('Google says your email is:' + data.name + ".\nView browser 'Console Log' for more details");
-  //       newUser = {
-  //         userName: data.name,
-  //         userId: data.id,
-  //         provider:"google"
-  //       };
-  //       if(API.getUser(newUser.userId)===null){
-  //         API.saveUser(newUser);
-  //       }
-  //       loadMenu();
-  //      });
-  //   });
-  // });
-
-  // //Log in with Twitter
-  // $('#twitter-button').on('click', function () {
-  //   //make sure to clear cahce before logging in with twitter
-  //   OAuth.clearCache();
-
-  //   // Use popup for oauth
-  //   OAuth.popup('twitter',{cache:true}).then(twitter => {
-  //     console.log('twitter:', twitter);
-  //     // Prompts 'welcome' message with User's email on successful login
-  //     // #me() is a convenient method to retrieve user data without requiring you
-  //     // to know which OAuth provider url to call
-  //     twitter.me().then(data => {
-  //       console.log('me data:', data);
-  //       //alert('Twitter says your name is:' + data.name + ".\nView browser 'Console Log' for more details");
-  //       newUser = {
-  //         userName: data.name,
-  //         userId: data.id,
-  //         provider:"twitter"
-  //       };
-  //       //save the user to sql database in user table.
-  //       if(API.getUser(newUser.userId)===null){
-  //         API.saveUser(newUser);
-  //       }
-  //       loadMenu();
-  //     })
-  //   });
-  // });
+  //get the provider string from the button's class
+  //the buttons have two classes and the first one is the provider class we will use to initiate the corresponding social login
   $(".login").on('click', function () {
     var provider = this.className.split(/\s+/)[0];
     logIn(provider);
   });
-});
 
-//sets the windows.location.href to /menu to navigate to the menu
+
+//given a socialProvider string log 
+//prompt the social login popup
+//then sign the user in using OAuth.io
 function logIn(socialProvider) {
+  var newUser ={};
   OAuth.clearCache();
   OAuth.popup(socialProvider,{cache:true}).then(result => {
       console.log((socialProvider + ": "), result.toJson());
       User.signin(result).done((user) => {
         console.log(user.data);
+        newUser= {
+          userName : user.data.name,
+          userId :   user.data.id,
+          provider : socialProvider
+        }
+        console.log(newUser);
+        API.saveUser(newUser);
       }).fail((err => {
         // email/password incorrect.
         console.log(err);
       }));
     });
+    // //go to menu.
+    //API.saveUser
     //loadMenu();
   }
-
+});
+//redirect to the menu.
   function loadMenu() {
     window.location.href = "/menu";
 

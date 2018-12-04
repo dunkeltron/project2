@@ -67,12 +67,15 @@
         </div>
     </div>
     <script>
-        if(localStorage.length===1){
+        if(!User.isLogged()){
             window.location.href= "/";
-        }
-        $(".signout-button").on("click",function(event){
-            localStorage.clear();
-        })
+        } 
+        
+        $(".fa-sign-out").on("click",function(event){
+            console.log("logout");
+            User.logout();
+        });
+        
     </script>
 </body>
 
