@@ -12,7 +12,7 @@
             <a href="profile" style="text-decorations:none; color:inherit;"><i class="fa fa-user"></i></a>
         </div>
         <div class="signout-button">
-            <a href="/" style="text-decorations:none; color:inherit;"><i class="fa fa-sign-out"></i></a>
+            <a href="/logout" style="text-decorations:none; color:inherit;"><i class="fa fa-sign-out"></i></a>
         </div>
     </div>
 </div>
@@ -67,14 +67,6 @@
         </div>
     </div>
     <script>
-        if(!User.isLogged()){
-            window.location.href= "/";
-        } 
-        
-        $(".fa-sign-out").on("click",function(event){
-            console.log("logout");
-            User.logout();
-        });
         
     </script>
 </body>
