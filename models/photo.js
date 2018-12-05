@@ -2,23 +2,23 @@ module.exports = function (sequelize, DataTypes) {
   var Photo = sequelize.define("Photo", {
     userId: {
       type: DataTypes.STRING,
-      allowNull:false
+      allowNull: false
     },
     eventId: {
       type: Datatypes.STRING,
-      allowNull:false
+      allowNull: false
     },
     photoName: {
-      type: Datatypes.STRING
-      allowNull:false
+      type: Datatypes.STRING,
+      allowNull: false
     },
     score:{
-        type: DataTypes.INTEGER,
-        allowNull:true
+      type: DataTypes.INTEGER,
+      allowNull: true
     },
     photoLink:{
-        type: DataTypes.STRING,
-        allowNull:false
+      type: DataTypes.STRING,
+      allowNull: false
     }
   });
   return Photo;
