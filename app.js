@@ -49,7 +49,10 @@ passport.use(new GoogleStrategy({
         callbackURL: 'http://localhost:3000/auth/google/callback'
     },
     (accessToken, refreshToken, profile, done) => {
-        //console.log(profile);
+        //log the user profile so we know the user has the information we need
+        //useful for figuring out what data we can access through handlebars parameters
+        // check menu.handlebars for an example
+        console.log(profile);
         newUser={
             userName : profile.displayName,
             userId : profile.id,

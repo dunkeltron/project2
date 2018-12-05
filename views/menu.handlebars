@@ -66,7 +66,9 @@
         </div>
     </div>
     <script>
-        var user = "{{ user }}";
+        //you can access attributes of the current user through the handlebars parameter 
+        //by typing "{{user.desiredAttribute}}"
+        var user = "{{ user.id }}";
         console.log(user);
     </script>
 </body>
