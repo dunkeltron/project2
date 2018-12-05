@@ -5,12 +5,12 @@
 </header>
 
 <div id="nav-footer">
-    
+
     <div class="icons">
         <div class="events-button">
             <a href="menu" style="text-decorations:none; color:inherit;"><i class="fa fa-compass"></i></a>
         </div>
-         <div class="images-button">
+        <div class="images-button">
             <a href="photos" style="text-decorations:none; color:inherit;"><i class="fa fa-image"></i></a>
         </div>
         <div class="signout-button">
@@ -19,51 +19,51 @@
     </div>
 </div>
 
-  <div class="event-menu-title">
-    </div>
+<div class="event-menu-title">
+</div>
 
 <div id="events-nav">
-    
+
     <div class="events-list">
         <div class="event-name">
-             <div class="add-event">
-                 <span style="font-size: 40px;">
-            <i class="fa fa-plus-square"></i>
-            </span>
-        </div>
+            <div class="add-event">
+                <span style="font-size: 40px;">
+                    <i class="fa fa-plus-square"></i>
+                </span>
+            </div>
             <h3>Artist | Venue</h3>
         </div>
     </div>
 
     <div class="events-list">
         <div class="event-name">
-             <div class="add-event">
-                 <span style="font-size: 40px;">
-            <i class="fa fa-plus-square"></i>
-            </span>
-        </div>
+            <div class="add-event">
+                <span style="font-size: 40px;">
+                    <i class="fa fa-plus-square"></i>
+                </span>
+            </div>
             <h3>The Killers | WAMU Theatre</h3>
         </div>
     </div>
 
     <div class="events-list">
         <div class="event-name">
-             <div class="add-event">
-                 <span style="font-size: 40px;">
-            <i class="fa fa-plus-square"></i>
-            </span>
-        </div>
+            <div class="add-event">
+                <span style="font-size: 40px;">
+                    <i class="fa fa-plus-square"></i>
+                </span>
+            </div>
             <h3>Beyonce | Century Link Field</h3>
         </div>
     </div>
 
     <div class="events-list">
         <div class="event-name">
-             <div class="add-event">
-                 <span style="font-size: 40px;">
-            <i class="fa fa-plus-square"></i>
-            </span>
-        </div>
+            <div class="add-event">
+                <span style="font-size: 40px;">
+                    <i class="fa fa-plus-square"></i>
+                </span>
+            </div>
             <h3>Kygo | SoDo Box Office</h3>
         </div>
     </div>
@@ -71,8 +71,12 @@
 
 
 
-
 </div>
-
+<script>
+    var userDisplayName = "{{ user.displayName }}";
+    var userId = "{{ user.id}}"
+    var userSocialProvider = "{{user.provider}}";
+    console.log(userDisplayName,userId);
+</script>
 
 </html>

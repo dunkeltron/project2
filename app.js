@@ -49,13 +49,12 @@ passport.use(new GoogleStrategy({
         callbackURL: 'http://localhost:3000/auth/google/callback'
     },
     (accessToken, refreshToken, profile, done) => {
-        console.log(profile);
+        //console.log(profile);
         newUser={
             userName : profile.displayName,
             userId : profile.id,
             provider : profile.provider
         }
-        //createNewUser(newUser);
         done(null, profile); // passes the profile data to serializeUser
     }
 ));

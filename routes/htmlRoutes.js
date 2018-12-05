@@ -21,6 +21,7 @@ module.exports = function (app,passport) {
   app.get("/photos", isUserAuthenticated,function (req, res) {
     db.User.findAll({}).then(function (dbExamples) {
       res.render("photos", {
+        user: req.user,
         msg: "Welcome!",
         examples: dbExamples
       });
@@ -28,17 +29,17 @@ module.exports = function (app,passport) {
   });
 
   app.get("/profile", isUserAuthenticated,function (req, res) {
-    db.User.findAll({}).then(function (dbExamples) {
+    console.log(req.user);
       res.render("profile", {
-        msg: "Welcome!",
-        examples: dbExamples
+        user: req.user
       });
-    });
   });
 
   app.get("/menu", isUserAuthenticated,function (req, res) {
+    console.log(req.user);
     db.User.findAll({}).then(function (dbExamples) {
       res.render("menu", {
+        user: (req.user),
         msg: "Welcome!",
         examples: dbExamples
       });
@@ -49,6 +50,7 @@ module.exports = function (app,passport) {
   app.get("/camera", isUserAuthenticated,function (req, res) {
     db.User.findAll({}).then(function (dbExamples) {
       res.render("camera", {
+        user: req.user,
         msg: "Welcome!",
         examples: dbExamples
       });
