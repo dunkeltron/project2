@@ -29,7 +29,6 @@ module.exports = function (app,passport) {
   });
 
   app.get("/profile", isUserAuthenticated,function (req, res) {
-    console.log(req.user);
       res.render("profile", {
         user: req.user
       });
