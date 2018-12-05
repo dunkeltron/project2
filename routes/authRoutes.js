@@ -3,6 +3,8 @@ module.exports = function (app, passport) {
     
     
     app.get('/auth/google', passport.authenticate('google', {
+        successRedirect: '/menu',
+        failureRedirect: '/',
         scope: ['profile'] // Used to specify the required data
     }));
 
