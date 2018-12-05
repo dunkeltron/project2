@@ -5,14 +5,13 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdn.rawgit.com/oauth-io/oauth-js/c5af4519/dist/oauth.js"></script>
 </header>
-
 <div id="nav-footer">
     <div class="icons">
         <div class="profile-button">
             <a href="profile" style="text-decorations:none; color:inherit;"><i class="fa fa-user"></i></a>
         </div>
         <div class="signout-button">
-            <a href="/" style="text-decorations:none; color:inherit;"><i class="fa fa-sign-out"></i></a>
+            <a href="/logout" style="text-decorations:none; color:inherit;"><i class="fa fa-sign-out"></i></a>
         </div>
     </div>
 </div>
@@ -67,15 +66,10 @@
         </div>
     </div>
     <script>
-        if(!User.isLogged()){
-            window.location.href= "/";
-        } 
-        
-        $(".fa-sign-out").on("click",function(event){
-            console.log("logout");
-            User.logout();
-        });
-        
+        //you can access attributes of the current user through the handlebars parameter 
+        //by typing "{{user.desiredAttribute}}"
+        var user = "{{ user.id }}";
+        console.log(user);
     </script>
 </body>
 
