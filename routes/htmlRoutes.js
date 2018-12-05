@@ -36,7 +36,6 @@ module.exports = function (app,passport) {
   });
 
   app.get("/menu", isUserAuthenticated,function (req, res) {
-    console.log(req.user);
     db.User.findAll({}).then(function (dbExamples) {
       res.render("menu", {
         user: (req.user),
