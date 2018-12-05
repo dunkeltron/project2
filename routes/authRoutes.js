@@ -1,6 +1,8 @@
 module.exports = function (app, passport) {
     // passport.authenticate middleware is used here to authenticate the request
     app.get('/auth/google', passport.authenticate('google', {
+        successRedirect: '/menu',
+        failureRedirect: '/',
         scope: ['profile'] // Used to specify the required data
     }));
 
