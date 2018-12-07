@@ -5,11 +5,11 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false
     },
     eventId: {
-      type: Datatypes.STRING,
+      type: DataTypes.STRING,
       allowNull: false
     },
     photoName: {
-      type: Datatypes.STRING,
+      type: DataTypes.STRING,
       allowNull: false
     },
     score:{

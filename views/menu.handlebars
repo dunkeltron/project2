@@ -2,8 +2,6 @@
 
 <header>
     <link rel="stylesheet" href="/styles/main.css" media="screen" title="no title" charset="utf-8">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://cdn.rawgit.com/oauth-io/oauth-js/c5af4519/dist/oauth.js"></script>
 </header>
 <div id="nav-footer">
     <div class="icons">
@@ -16,62 +14,66 @@
     </div>
 </div>
 
-  <div class="event-menu-title">
-        <h2>Events in 'Seattle'</h2>
-    </div>
+<div class="event-menu-title">
+    <h2>Events in 'Seattle'</h2>
+</div>
 
 <div id="events-nav">
-    
+
     <div class="events-list">
         <div class="event-name">
-             <div class="add-event">
-                 <span style="font-size: 40px;">
-            <i class="fa fa-plus-square"></i>
-            </span>
-        </div>
+            <div class="add-event">
+                <span style="font-size: 40px;">
+                    <i class="fa fa-plus-square"></i>
+                </span>
+            </div>
             <h3>Artist | Venue</h3>
         </div>
     </div>
 
     <div class="events-list">
         <div class="event-name">
-             <div class="add-event">
-                 <span style="font-size: 40px;">
-            <i class="fa fa-plus-square"></i>
-            </span>
-        </div>
+            <div class="add-event">
+                <span style="font-size: 40px;">
+                    <i class="fa fa-plus-square"></i>
+                </span>
+            </div>
             <h3>The Killers | WAMU Theatre</h3>
         </div>
     </div>
 
     <div class="events-list">
         <div class="event-name">
-             <div class="add-event">
-                 <span style="font-size: 40px;">
-            <i class="fa fa-plus-square"></i>
-            </span>
-        </div>
+            <div class="add-event">
+                <span style="font-size: 40px;">
+                    <i class="fa fa-plus-square"></i>
+                </span>
+            </div>
             <h3>Beyonce | Century Link Field</h3>
         </div>
     </div>
 
     <div class="events-list">
         <div class="event-name">
-             <div class="add-event">
-                 <span style="font-size: 40px;">
-            <i class="fa fa-plus-square"></i>
-            </span>
-        </div>
+            <div class="add-event">
+                <span style="font-size: 40px;">
+                    <i class="fa fa-plus-square"></i>
+                </span>
+            </div>
             <h3>Kygo | SoDo Box Office</h3>
         </div>
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    {{#each scripts}}
+        <script src="{{script}}"></script>
+    {{/each}}
     <script>
         //you can access attributes of the current user through the handlebars parameter 
         //by typing "{{user.desiredAttribute}}"
         var userId = "{{ user.id }}";
-        console.log(user);
+        console.log(userId);
     </script>
-</body>
+
+    </body>
 
 </html>
