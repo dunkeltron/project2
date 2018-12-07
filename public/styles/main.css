@@ -79,10 +79,12 @@ a {
 #facebook-button{
     display: inline;
     margin-right: 20px;
+    opacity: .15;
 }
 
 #twitter-button{
     display: inline;
+    opacity: .15;
 }
 
 #github-button{
