@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const passport = require('passport');
 var db = require("./models/");
+var https = require("https");
 const GoogleStrategy = require('passport-google-oauth20');
 //const FacebookStrategy = require('passport-facebook');
 //const TwitterStrategy = require('passport-twitter');
@@ -42,7 +43,7 @@ require("./routes/apiRoutes")(app, passport);
 require("./routes/htmlRoutes")(app, passport);
 require("./routes/authRoutes")(app,passport);
 
-// Strategy config
+// google Strategy config
 passport.use(new GoogleStrategy({
         clientID: '80481251698-gjc9859qica9mdfdp58qo1dnofa0tjmn.apps.googleusercontent.com',
         clientSecret: 'Buf9mfJiMoTOjwVE3QUrWcGY',
@@ -53,11 +54,6 @@ passport.use(new GoogleStrategy({
         //useful for figuring out what data we can access through handlebars parameters
         // check menu.handlebars for an example
         console.log(profile);
-        newUser={
-            userName : profile.displayName,
-            userId : profile.id,
-            provider : profile.provider
-        }
         done(null, profile); // passes the profile data to serializeUser
     }
 ));
@@ -72,6 +68,7 @@ passport.deserializeUser((user, done) => {
     done(null, user);
 });
 
+//
 function createNewUser(user){
     $.ajax({
         method: "POST",
