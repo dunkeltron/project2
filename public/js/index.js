@@ -39,7 +39,7 @@ $(document).ready(function () {
   //LOGIN//
   //get the provider string from the button's class
   //the buttons have two classes and the first one is the provider class we will use to initiate the corresponding social login
-  $(".login").on('click', function () {
+  $(".google").on('click', function () {
     var provider = this.className.split(/\s+/)[0];
     logIn(provider);
   });
@@ -49,6 +49,7 @@ $(document).ready(function () {
 //prompt the social login popup
 //then sign the user in using OAuth.io
 function logIn(socialProvider) {
+  console.log(socialProvider)
   window.location.href="/auth/"+socialProvider;
   
   }

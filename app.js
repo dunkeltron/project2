@@ -72,7 +72,7 @@ passport.deserializeUser((user, done) => {
 function createNewUser(user){
     $.ajax({
         method: "POST",
-        url : "/api/users/"+user.userId
+        url: "/api/users/" + user.userId
     });
 }
 
