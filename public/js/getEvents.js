@@ -92,7 +92,7 @@
          //console.log(item);
         //var vid = item.id.videoId;
         //   // Increase the videoCount (track video # - starting at 1)
-        eventDisplay(item.id,item.name,item._embedded.venues[0].name);
+        eventDisplay(item.id,item.name,item._embedded.venues[0].name,i);
   
         // If the video has a headline, log and append to $videoList
         /*var headline = item.snippet.title;
@@ -123,29 +123,30 @@
     // CLICK HANDLERS
     // ==========================================================
   
-    $(".add-event-button").on("click", function (event) {
-      // This line allows us to take advantage of the HTML "submit" property
-      // This way we can hit enter on the keyboard and it registers the search
-      // (in addition to clicks). Prevents the page from reloading on form submit.
-     event.preventDefault();
-     console.log(this.className.split(/\s+/)[0]);
-     //POST
-   /*  $.ajax({
-      url: "/api/events/",
-      method: "POST",
-      data: event.obj
-      // Empty the region associated with the videos
-      //clear();
+  //   $(".add-event-button").on("click", function (event) {
+  //     // This line allows us to take advantage of the HTML "submit" property
+  //     // This way we can hit enter on the keyboard and it registers the search
+  //     // (in addition to clicks). Prevents the page from reloading on form submit.
+  //    event.preventDefault();
+  //    console.log("clicked");
+  //    console.log(this.data('eventData'));
+  //    //POST
+  //  /*  $.ajax({
+  //     url: "/api/events/",
+  //     method: "POST",
+  //     data: event.obj
+  //     // Empty the region associated with the videos
+  //     //clear();
      
-     */
+  //    */
     
-      //TODO: SEND TO PICTURE PAGE
-      //.then()
+  //     //TODO: SEND TO PICTURE PAGE
+  //     //.then()
   
   
   
       
-    })
+  //   })
       
     
     
@@ -213,7 +214,7 @@
     return geohash;
   }
   
-  function eventDisplay(eventId, artist, venue) {
+  function eventDisplay(eventId, artist, venue,index) {
     
     //declare variables and asssign empty html elemenmts to them
     var listDiv, nameDiv, addDiv, span, h3, iTag;
@@ -228,16 +229,13 @@
     iTag.addClass("fa");
     iTag.addClass("fa-plus-square");
     iTag.addClass("add-event-button");
-    iTag.addClass(artist);
-    iTag.addClass(venue);
-    iTag.add("id",eventId);
+    iTag.data("event",{artistName :artist, venueName : venue, event: eventId});
     span.css({
         "font-size": "40px"
     });
     addDiv.addClass("add-event");
-    addDiv.add("id",eventId);
+    addDiv.attr("id",eventId);
     nameDiv.addClass("event-name");
-    iTag.addClass(artist);
     listDiv.addClass("events-list");
     h3.text(artist+ " | "+venue);
     //construct the event thing to display
@@ -247,4 +245,5 @@
     listDiv.append(nameDiv);
     $("#events-nav").append(listDiv);
   }
+  
   
