@@ -85,6 +85,7 @@
                     eventDisplay(element.eventId,element.eventName,element.eventVenue);
                 });
             });
+    
     function eventDisplay(eventId, artist, venue, index) {
 
     //declare variables and asssign empty html elements to them
@@ -122,6 +123,10 @@
     listDiv.append(nameDiv);
     $("#events-nav").append(listDiv);
 }
+$(document).on("click",function(event){
+    window.location.href = "/photos";
+})
+
 </script>
 
 </html>

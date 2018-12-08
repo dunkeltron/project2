@@ -64,7 +64,7 @@ function buildQueryURL() {
     //console.log(dateString); //2018-12-7
     //console.log(userGeoHash);
 
-    queryParams.geoPoint = userGeoHash; //"c23nb62qp";
+    queryParams.geoPoint = "c23nb4vv7"; //"c23nb62qp";
     queryParams.startDateTime = eventTime// ("2018-12-07T00:01:00Z")
     queryParams.endDateTime = eventEnd//("2018-12-07T23:59:00Z")
     queryParams.radius = "4"
