@@ -34,7 +34,7 @@ module.exports = function (app, passport) {
     }).then(function (dbUser) {
       res.json(dbUser);
       // const resObj = dbUser.map(user => {
-        
+
       //   //tidy up the user data
       //   return Object.assign({}, {
       //     userName: user.userName,
@@ -65,7 +65,9 @@ module.exports = function (app, passport) {
 
   // Create a new user
   app.post("/api/users/", function (req, res) {
-    db.User.findOrCreate(req.body).then(function (dbUser) {
+    db.User.findOrCreate({
+      where: {userId: req.body.userId, userName:req.body.userName}
+    }).then(function (dbUser) {
       res.json(dbUser);
     });
   });
@@ -90,10 +92,33 @@ module.exports = function (app, passport) {
         model: db.Photo
       }]
     }).then(function (dbEvent) {
-      res.json(dbEvent);
+      const resObj = dbEvent.map(events => {
+        return Object.assign({}, {
+          eventName: events.eventName,
+          eventVenue: events.eventVenue,
+          eventId: events.eventId,
+          photos: events.Photos.map(photos => {
+            return Object.assign({}, {
+              eventId: photos.eventId,
+              photoLink: photos.photoLink
+            })
+          })
+        })
+      });
+     res.json(resObj);
     });
   });
-
+  //upload photo to photos array in given event
+  // app.put('/events/:event_id', function (req, res, next) {
+  //   db.Event.update(
+  //     {eventId: req.params.event_id},
+  //     {returning: true, where: {eventId: req.params.event_id} }
+  //   )
+  //   .then(function([ rowsUpdate, [updatedBook] ]) {
+  //     res.json(updatedBook)
+  //   })
+  //   .catch(next)
+  //  })
   //get specific event by eventId
   app.get("/api/events/:event_id", function (req, res) {
     db.Event.findOne({
@@ -103,22 +128,22 @@ module.exports = function (app, passport) {
       include: [{
         model: db.Photo
       }]
-    }).then(function (dbEvent) {
-      // const resObj = dbEvent.map(events => {
-      //   return Object.assign({}, {
-      //     eventName: events.eventName,
-      //     eventVenue: events.eventVenue,
-      //     eventId: events.eventId,
-      //     photos: events.map(photos => {
-      //       return Object.assign({}, {
-      //         userId: photos.userId,
-      //         eventId: photos.eventId,
-      //         photoLink: photos.photoLink
-      //       })
-      //     })
-      //   })
-      // });
-      res.json(dbEvent);
+    }).then(dbEvent => {
+      var eventArr = [dbEvent];
+       const resObj = eventArr.map(events => {
+         return Object.assign({}, {
+           eventName: events.eventName,
+           eventVenue: events.eventVenue,
+           eventId: events.eventId,
+           photos: events.Photos.map(photos => {
+             return Object.assign({}, {
+               eventId: photos.eventId,
+               photoLink: photos.photoLink
+             })
+           })
+         })
+       });
+      res.json(resObj);
     });
   });
 
@@ -136,11 +161,11 @@ module.exports = function (app, passport) {
       res.json(dbPhotos);
     });
   });
-
+ 
   //get all photos
   app.get("/api/photos/", function (req, res) {
     db.Photo.findAll({}).then(function (dbPhotos) {
-      res.json(dbPhotos)
+      res.json(dbPhotos);
     })
   });
 

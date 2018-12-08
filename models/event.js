@@ -10,7 +10,8 @@ module.exports = function (sequelize, DataTypes) {
         },
         eventId: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            primaryKey: true
         }
     });
     return Event;

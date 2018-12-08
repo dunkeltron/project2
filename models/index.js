@@ -42,6 +42,5 @@ db.Sequelize = Sequelize;
 db.User.hasMany(db.Event);
 db.Event.hasMany(db.Photo);
 db.Photo.belongsTo(db.Event);
-db.Event.belongsTo(db.User);
 
 module.exports = db;
