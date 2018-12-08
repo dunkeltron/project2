@@ -16,8 +16,8 @@ function getLocation() {
 }
 
 function showPosition(position) {
-    console.log(position.coords.latitude, position.coords.longitude);
-    console.log(position.coords);
+    //console.log(position.coords.latitude, position.coords.longitude);
+    //console.log(position.coords);
     console.log(encodePosition(position.coords.latitude, position.coords.longitude, 9));
 }
 
@@ -58,13 +58,13 @@ function buildQueryURL() {
     var eventTime = startTime.substring(0, indexT).concat(timezero);
     var eventEnd = startTime.substring(0, indexT).concat(timemax);
 
-    console.log(startTime); //2018-12-07T18:58:33
-    console.log(eventTime);
-    console.log(eventEnd);
-    console.log(dateString); //2018-12-7
-    console.log(userGeoHash);
+    //console.log(startTime); //2018-12-07T18:58:33
+    //console.log(eventTime);
+    //console.log(eventEnd);
+    //console.log(dateString); //2018-12-7
+    //console.log(userGeoHash);
 
-    queryParams.geoPoint = userGeoHash; //"c23nb62qp";
+    queryParams.geoPoint = "c23nb4vv7"; //"c23nb62qp";
     queryParams.startDateTime = eventTime// ("2018-12-07T00:01:00Z")
     queryParams.endDateTime = eventEnd//("2018-12-07T23:59:00Z")
     queryParams.radius = "4"
@@ -72,8 +72,8 @@ function buildQueryURL() {
     // Search string queryParams.q = $("#query").val().trim();
 
     // Logging the URL so we have access to it for troubleshooting
-    console.log("---------------\nURL: " + queryURL + "\n---------------");
-    console.log(queryURL + $.param(queryParams));
+    //console.log("---------------\nURL: " + queryURL + "\n---------------");
+    //console.log(queryURL + $.param(queryParams));
     return queryURL + $.param(queryParams);
 }
 
@@ -86,12 +86,12 @@ function buildQueryURL() {
 function getEvent(TMData) {
     ajaxData = TMData
     // Log the TMData to console, where it will show up as an object
-    console.log(TMData);
-    console.log("------------------------------------");
+    //console.log(TMData);
+    //console.log("------------------------------------");
 
     //var numvideos = TMData.pageInfo.resultsPerPage;
     $.each(TMData._embedded.events, function (i, item) {
-        console.log(item);
+        //console.log(item);
         eventDisplay(item.id, item.name, item._embedded.venues[0].name, i);
     })
 
@@ -121,7 +121,7 @@ $.ajax({
     url: queryURL,
     method: "GET"
 }).done(function (result) {
-    console.log(result);
+    //console.log(result);
     getEvent(result);
 }).fail(function (err) {
     throw err;
@@ -131,8 +131,8 @@ $.ajax({
   //     // This way we can hit enter on the keyboard and it registers the search
   //     // (in addition to clicks). Prevents the page from reloading on form submit.
   //    event.preventDefault();
-  //    console.log("clicked");
-  //    console.log(this.data('eventData'));
+  //    //console.log("clicked");
+  //    //console.log(this.data('eventData'));
   //    //POST
   //  /*  $.ajax({
   //     url: "/api/events/",
@@ -203,12 +203,8 @@ function eventDisplay(eventId, artist, venue, index) {
     span = $("<span>");
     iTag = $("<i>");
     h3 = $("<h3>");
-<<<<<<< HEAD
-
-=======
     h4 = $("<h4>");
   
->>>>>>> 3e4bd7e4c3e5a4d6f30bafa152dbc8246ca04ee7
     //populate the elements with data
     iTag.addClass("fa");
     iTag.addClass("fa-plus-square");
@@ -225,12 +221,8 @@ function eventDisplay(eventId, artist, venue, index) {
     addDiv.attr("id", eventId);
     nameDiv.addClass("event-name");
     listDiv.addClass("events-list");
-<<<<<<< HEAD
-    h3.text(artist + " | " + venue);
-=======
     h3.text(artist);
     h4.text(" | " + venue)
->>>>>>> 3e4bd7e4c3e5a4d6f30bafa152dbc8246ca04ee7
     //construct the event thing to display
     span.append(iTag);
     addDiv.append(span);

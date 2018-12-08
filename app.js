@@ -52,7 +52,6 @@ passport.use(new GoogleStrategy({
         //log the user profile so we know the user has the information we need
         //useful for figuring out what data we can access through handlebars parameters
         // check menu.handlebars for an example
-        console.log(profile);
         done(null, profile); // passes the profile data to serializeUser
     }
 ));

@@ -24,7 +24,7 @@
 
 <div id="events-nav">
 
-    <div class="events-list">
+    {{!-- <div class="events-list">
         <div class="event-name">
             <div class="add-event">
                 <span style="font-size: 40px;">
@@ -66,7 +66,7 @@
             </div>
             <h3>Kygo | SoDo Box Office</h3>
         </div>
-    </div>
+    </div> --}}
 
 
 
@@ -77,6 +77,56 @@
     var userId = "{{ user.id}}"
     var userSocialProvider = "{{user.provider}}";
     console.log(userDisplayName,userId);
+     $.ajax({
+                url: "/api/users/"+userId,
+                method: "GET"
+            }).then(function(res,err){
+                res.Shows.forEach(element =>{
+                    eventDisplay(element.eventId,element.eventName,element.eventVenue);
+                });
+            });
+    
+    function eventDisplay(eventId, artist, venue, index) {
+
+    //declare variables and asssign empty html elements to them
+    var listDiv, nameDiv, addDiv, span, h3, iTag;
+    listDiv = $("<div>");
+    nameDiv = $("<div>");
+    addDiv = $("<div>");
+    span = $("<span>");
+    iTag = $("<i>");
+    h3 = $("<h3>");
+    h4 = $("<h4>");
+  
+    //populate the elements with data
+    iTag.addClass("fa");
+    iTag.addClass("fa-plus-square");
+    iTag.addClass("add-event-button");
+    iTag.data("event", {
+        artistName: artist,
+        venueName: venue,
+        event: eventId
+    });
+    span.css({
+        "font-size": "40px"
+    });
+    addDiv.addClass("add-event");
+    addDiv.attr("id", eventId);
+    nameDiv.addClass("event-name");
+    listDiv.addClass("events-list");
+    h3.text(artist);
+    h4.text(" | " + venue)
+    //construct the event thing to display
+    span.append(iTag);
+    addDiv.append(span);
+    nameDiv.append(addDiv, h3, h4);
+    listDiv.append(nameDiv);
+    $("#events-nav").append(listDiv);
+}
+$(document).on("click",function(event){
+    window.location.href = "/photos";
+})
+
 </script>
 
 </html>
