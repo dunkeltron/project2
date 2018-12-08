@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   var User = sequelize.define("User", {
     userName: {
       type: DataTypes.STRING,
@@ -10,13 +10,7 @@ module.exports = function(sequelize, DataTypes) {
     userId: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [1]
-      }
-    },
-    provider: {
-      type: DataTypes.STRING,
-      allowNull: false,
+      primaryKey: true,
       validate: {
         len: [1]
       }

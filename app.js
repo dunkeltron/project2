@@ -6,8 +6,6 @@ const passport = require('passport');
 var db = require("./models/");
 var https = require("https");
 const GoogleStrategy = require('passport-google-oauth20');
-//const FacebookStrategy = require('passport-facebook');
-//const TwitterStrategy = require('passport-twitter');
 const cookieSession = require('cookie-session');
 
 var exphbs = require("express-handlebars");
