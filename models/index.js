@@ -39,8 +39,8 @@ Object.keys(db).forEach(function(modelName) {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 //relations
-db.User.hasMany(db.Event);
-db.Event.hasMany(db.Photo);
+db.User.hasMany(db.Event,{foreignKey: 'eventFk',as: "savedEvents"});
+db.Event.hasMany(db.Photo,{foreignKey:'photoFk',as:'concertPhotos'});
 db.Photo.belongsTo(db.Event);
 
 module.exports = db;
