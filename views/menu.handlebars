@@ -1,0 +1,110 @@
+<html>
+
+<header>
+    <link rel="stylesheet" href="/styles/main.css" media="screen" title="no title" charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="/js/getEvents.js"></script>
+
+</header>
+<div id="nav-footer">
+    <div class="icons">
+        <div class="profile-button">
+            <a href="profile" style="text-decorations:none; color:inherit;"><i class="fa fa-user"></i></a>
+        </div>
+        <div class="signout-button">
+            <a href="/logout" style="text-decorations:none; color:inherit;"><i class="fa fa-sign-out"></i></a>
+        </div>
+    </div>
+</div>
+
+<div class="event-menu-title">
+    <h2>Nearby Events</h2>
+</div>
+<!--TODO: Events don't have to be in Seattle-->
+<div id="events-nav">
+    <!--
+TODO: FOR EACH PASSED IN events from event.handlebars
+reference Cats handlebars 14. lesson-17
+    -->
+
+
+    <!--   <div class="events-list">
+        <div class="event-name">
+             <div class="add-event">
+                 <span style="font-size: 40px;">
+            <i class="fa fa-plus-square"></i>
+            </span>
+        </div>
+            <h3>Artist | Venue</h3>
+        </div>
+    </div>
+
+    <div class="events-list">
+        <div class="event-name">
+             <div class="add-event">
+                 <span style="font-size: 40px;">
+            <i class="fa fa-plus-square"></i>
+            </span>
+        </div>
+            <h3>The Killers | WAMU Theatre</h3>
+        </div>
+    </div>
+
+    <div class="events-list">
+        <div class="event-name">
+             <div class="add-event">
+                 <span style="font-size: 40px;">
+            <i class="fa fa-plus-square"></i>
+            </span>
+        </div>
+            <h3>Beyonce | Century Link Field</h3>
+        </div>
+    </div>
+
+    <div class="events-list">
+        <div class="event-name">
+             <div class="add-event">
+                 <span style="font-size: 40px;">
+            <i class="fa fa-plus-square"></i>
+            </span>
+        </div>
+            <h3>Kygo | SoDo Box Office</h3>
+        </div>
+    </div>
+    -->
+    {{!-- {{>event/event Artist=The kilers Again, Venue = KeyArena}} --}}
+
+    <script>
+        //you can access attributes of the current user through the handlebars parameter 
+        //by typing "{{user.desiredAttribute}}"
+        var userId = "{{ user.id }}";
+        console.log(userId);
+        $(document).ready(function () {
+
+            $(document).on("click", ".add-event-button", function (event) {
+                // This line allows us to take advantage of the HTML "submit" property
+                // This way we can hit enter on the keyboard and it registers the search
+                // (in addition to clicks). Prevents the page from reloading on form submit.
+                //event.preventDefault();
+                var targetDiv = event.currentTarget;
+                var eventData = $(targetDiv).data("event");
+                console.log(eventData);
+                //POST
+                /*  $.ajax({
+                   url: "/api/events/",
+                   method: "POST",
+                   data: event.obj
+                   // Empty the region associated with the videos
+                   //clear();
+                  
+                  */
+
+                //TODO: SEND TO PICTURE PAGE
+                //.then()
+            });
+        });
+
+    </script>
+    </body>
+
+</html>
