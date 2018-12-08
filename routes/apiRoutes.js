@@ -72,7 +72,7 @@ module.exports = function (app, passport) {
   });
 
   app.post("/api/events/",function (req, res){
-    db.Event.create(req.body).then(function (dbEvent) {
+    db.Event.findOrCreate(req.body).then(function (dbEvent) {
       res.json(dbEvent);
     });
   })

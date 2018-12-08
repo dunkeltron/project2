@@ -3,7 +3,8 @@
 <header>
     <link rel="stylesheet" href="/styles/main.css" media="screen" title="no title" charset="utf-8">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://cdn.rawgit.com/oauth-io/oauth-js/c5af4519/dist/oauth.js"></script>
+    <script src="/js/getEvents.js"></script>
+
 </header>
 <div id="nav-footer">
     <div class="icons">
@@ -16,13 +17,18 @@
     </div>
 </div>
 
-  <div class="event-menu-title">
-        <h2>Events in 'Seattle'</h2>
-    </div>
-
+<div class="event-menu-title">
+    <h2>Events</h2>
+</div>
+<!--TODO: Events don't have to be in Seattle-->
 <div id="events-nav">
-    
-    <div class="events-list">
+    <!--
+TODO: FOR EACH PASSED IN events from event.handlebars
+reference Cats handlebars 14. lesson-17
+    -->
+
+
+    <!--   <div class="events-list">
         <div class="event-name">
              <div class="add-event">
                  <span style="font-size: 40px;">
@@ -65,14 +71,40 @@
             <h3>Kygo | SoDo Box Office</h3>
         </div>
     </div>
+    -->
     {{!-- {{>event/event Artist=The kilers Again, Venue = KeyArena}} --}}
 
     <script>
         //you can access attributes of the current user through the handlebars parameter 
         //by typing "{{user.desiredAttribute}}"
         var userId = "{{ user.id }}";
-        console.log(user);
+        console.log(userId);
+        $(document).ready(function () {
+
+            $(document).on("click", ".add-event-button", function (event) {
+                // This line allows us to take advantage of the HTML "submit" property
+                // This way we can hit enter on the keyboard and it registers the search
+                // (in addition to clicks). Prevents the page from reloading on form submit.
+                //event.preventDefault();
+                var targetDiv = event.currentTarget;
+                var eventData = $(targetDiv).data("event");
+                console.log(eventData);
+                //POST
+                /*  $.ajax({
+                   url: "/api/events/",
+                   method: "POST",
+                   data: event.obj
+                   // Empty the region associated with the videos
+                   //clear();
+                  
+                  */
+
+                //TODO: SEND TO PICTURE PAGE
+                //.then()
+            });
+        });
+
     </script>
-</body>
+    </body>
 
 </html>
