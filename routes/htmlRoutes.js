@@ -44,6 +44,7 @@ module.exports = function (app,passport) {
         //eventsArr = req.events in area from ticketmaster,
         user: (req.user),
         msg: "Welcome!",
+        scripts: scripts,
         examples: dbExamples
       });
     });
