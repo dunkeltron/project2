@@ -38,5 +38,10 @@ Object.keys(db).forEach(function(modelName) {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+//relations
+db.User.hasMany(db.Event);
+db.Event.hasMany(db.Photo);
+db.Photo.belongsTo(db.Event);
+db.Event.belongsTo(db.User);
 
 module.exports = db;
