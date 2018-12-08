@@ -203,12 +203,8 @@ function eventDisplay(eventId, artist, venue, index) {
     span = $("<span>");
     iTag = $("<i>");
     h3 = $("<h3>");
-<<<<<<< HEAD
-
-=======
     h4 = $("<h4>");
   
->>>>>>> 3e4bd7e4c3e5a4d6f30bafa152dbc8246ca04ee7
     //populate the elements with data
     iTag.addClass("fa");
     iTag.addClass("fa-plus-square");
@@ -225,12 +221,8 @@ function eventDisplay(eventId, artist, venue, index) {
     addDiv.attr("id", eventId);
     nameDiv.addClass("event-name");
     listDiv.addClass("events-list");
-<<<<<<< HEAD
-    h3.text(artist + " | " + venue);
-=======
     h3.text(artist);
     h4.text(" | " + venue)
->>>>>>> 3e4bd7e4c3e5a4d6f30bafa152dbc8246ca04ee7
     //construct the event thing to display
     span.append(iTag);
     addDiv.append(span);
