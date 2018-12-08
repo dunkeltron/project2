@@ -1,13 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
     var Event = sequelize.define("Event", {
-        longitude: {
-            type: DataTypes.INTEGER,
-            allowNull: true
-        },
-        latitude: {
-            type: DataTypes.INTEGER,
-            allowNull: true
-        },
         eventName: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -18,7 +10,8 @@ module.exports = function (sequelize, DataTypes) {
         },
         eventId: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            primaryKey: true
         }
     });
     return Event;

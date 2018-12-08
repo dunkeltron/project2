@@ -1,23 +1,21 @@
-module.exports = function (sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
   var Photo = sequelize.define("Photo", {
-    userId: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    eventId: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    photoName: {
-      type: DataTypes.STRING,
-      allowNull: true
-    },
-    score:{
+    score: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
+      defaultValue: 0
     },
-    photoLink:{
+    photoId:{
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
+    },
+    photoLink: {
       type: DataTypes.STRING,
+      allowNull: false
+    },
+    eventFk: {
+      type: DataTypes.UUID,
       allowNull: false
     }
   });
