@@ -224,6 +224,7 @@
     span = $("<span>");
     iTag = $("<i>");
     h3 = $("<h3>");
+    h4 = $("<h4>");
   
     //populate the elements with data
     iTag.addClass("fa");
@@ -237,11 +238,12 @@
     addDiv.attr("id",eventId);
     nameDiv.addClass("event-name");
     listDiv.addClass("events-list");
-    h3.text(artist+ " | "+venue);
+    h3.text(artist);
+    h4.text(" | " + venue)
     //construct the event thing to display
     span.append(iTag);
     addDiv.append(span);
-    nameDiv.append(addDiv, h3);
+    nameDiv.append(addDiv, h3, h4);
     listDiv.append(nameDiv);
     $("#events-nav").append(listDiv);
   }

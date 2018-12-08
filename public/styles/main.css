@@ -137,8 +137,6 @@ a {
     z-index: 10;
 }
 
-
-
 .camera-button{
     position: absolute;
     left: 50%;
@@ -155,8 +153,32 @@ a {
     width: fit-content;
     margin-left:auto;
     margin-right: auto;
-
 }
+
+input#file-input {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    width: 100px;
+    padding: 100px 0 0 0;
+    height: 90px;
+    bottom: 34px;
+    z-index: 9;
+    overflow: hidden;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: none;
+    border-radius: 80px;
+    color: inherit;
+    color: white;
+    text-decoration: none;
+    background-size: 60px 60px;
+  }
+
+  input#file-input:focus {outline:0;}
 
 .signout-button{
     display: inline;
@@ -204,6 +226,14 @@ a {
 
 h3 {
     display: inline;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+h4 {
+    display: inline;
+    font-weight: 100;
+    font-size: 14px;
 }
 
 .fa-plus-square {
