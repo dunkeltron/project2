@@ -77,33 +77,64 @@ reference Cats handlebars 14. lesson-17
     <script>
         //you can access attributes of the current user through the handlebars parameter 
         //by typing "{{user.desiredAttribute}}"
-        var userId = "{{ user.id }}";
-        console.log(userId);
+        var newEvent = {};
+        var newUser = {};
+        newUser.userName = "{{user.displayName}}";
+        newUser.userId = "{{user.id}}";
+
         $(document).ready(function () {
+
+            console.log(newUser);
+            $.ajax({
+                url: "/api/users/",
+                method: "POST",
+                data: newUser
+                // Empty the region associated with the videos
+                //clear();
+
+
+
+                //TODO: SEND TO PICTURE PAGE
+                //.then()
+            });
 
             $(document).on("click", ".add-event-button", function (event) {
                 // This line allows us to take advantage of the HTML "submit" property
                 // This way we can hit enter on the keyboard and it registers the search
                 // (in addition to clicks). Prevents the page from reloading on form submit.
                 //event.preventDefault();
+                console.log(newUser);
                 var targetDiv = event.currentTarget;
-                var eventData = $(targetDiv).data("event");
-                console.log(eventData);
-                //POST
-                /*  $.ajax({
-                   url: "/api/events/",
-                   method: "POST",
-                   data: event.obj
-                   // Empty the region associated with the videos
-                   //clear();
-                  
-                  */
+                newEvent = $(targetDiv).data("event");
+                newEvent.userName = newUser.userName;
 
-                //TODO: SEND TO PICTURE PAGE
-                //.then()
+
+                console.log(newEvent);
+                submitEvent(newEvent);
+               
+                
             });
         });
+        function submitEvent(){
+             //POST
+            $.ajax({
+                    url: "/api/shows/",
+                    method: "POST",
+                    data: {
+                        eventName: newEvent.artistName,
+                        eventVenue: newEvent.venueName,
+                        eventId: newEvent.event,
+                        UserUserName: newEvent.userName
+                    }
+                    // Empty the region associated with the videos
+                    //clear();
 
+
+
+                    //TODO: SEND TO PICTURE PAGE
+                    //.then()
+                });
+        }
     </script>
     </body>
 

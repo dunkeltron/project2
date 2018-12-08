@@ -39,8 +39,18 @@ Object.keys(db).forEach(function(modelName) {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 //relations
-db.User.hasMany(db.Event,{foreignKey: 'eventFk',as: "savedEvents"});
-db.Event.hasMany(db.Photo,{foreignKey:'photoFk',as:'concertPhotos'});
-db.Photo.belongsTo(db.Event);
+// db.User.belongsToMany(db.Event, {
+//   through: 'eventUsers',
+//   as: 'savedEvents',
+//   foreignKey: 'userName'
+// });
+// db.Event.belongsToMany(db.User, {
+//   through: 'userEvents',
+//   as: 'eventSaved',
+//   foreignKey: 'eventId'
+// });
+//db.Event.hasMany(db.Photo,{foreignKey:'photoFk',as:'concertPhotos'});
+//db.Photo.belongsTo(db.Event);
 
 module.exports = db;
+

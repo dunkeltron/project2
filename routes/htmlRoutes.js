@@ -42,9 +42,8 @@ module.exports = function (app,passport) {
       res.render("menu", {
         //TODO: with HANDLEBARS ONLY
         //eventsArr = req.events in area from ticketmaster,
-        user: (req.user),
+        user: req.user,
         msg: "Welcome!",
-        scripts: scripts,
         examples: dbExamples
       });
     });
