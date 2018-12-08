@@ -29,13 +29,14 @@ app.use(passport.session()); // Used to persist login sessions
 
 
 // Handlebars
+
+app.set("view engine", "handlebars");
 app.engine(
     "handlebars",
     exphbs({
         defaultLayout: "main"
     })
 );
-app.set("view engine", "handlebars");
 
 
 //routes 

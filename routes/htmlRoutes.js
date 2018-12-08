@@ -1,4 +1,5 @@
 var db = require("../models");
+var scripts = [{ script: '/js/getEvents.js'}];
 // Middleware to check if the user is authenticated
 function isUserAuthenticated(req, res, next) {
   if (req.user) {
@@ -39,8 +40,11 @@ module.exports = function (app,passport) {
   app.get("/menu", isUserAuthenticated,function (req, res) {
     db.User.findAll({}).then(function (dbExamples) {
       res.render("menu", {
+        //TODO: with HANDLEBARS ONLY
+        //eventsArr = req.events in area from ticketmaster,
         user: (req.user),
         msg: "Welcome!",
+        scripts: scripts,
         examples: dbExamples
       });
     });
