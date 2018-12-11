@@ -15,8 +15,7 @@ module.exports = function (app,passport) {
   app.get("/", function (req, res) {
     db.User.findAll({}).then(function (dbExamples) {
       res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
+        msg: "Welcome!"
       });
     });
   });
@@ -25,8 +24,7 @@ module.exports = function (app,passport) {
     db.User.findAll({}).then(function (dbExamples) {
       res.render("photos", {
         user: req.user,
-        msg: "Welcome!",
-        examples: dbExamples
+        msg: "Welcome!"
       });
     });
   });
@@ -43,8 +41,7 @@ module.exports = function (app,passport) {
         //TODO: with HANDLEBARS ONLY
         //eventsArr = req.events in area from ticketmaster,
         user: req.user,
-        msg: "Welcome!",
-        examples: dbExamples
+        msg: "Welcome!"
       });
     });
   });
@@ -54,24 +51,12 @@ module.exports = function (app,passport) {
     db.User.findAll({}).then(function (dbExamples) {
       res.render("camera", {
         user: req.user,
-        msg: "Welcome!",
-        examples: dbExamples
+        msg: "Welcome!"
       });
     });
   });
 
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function (req, res) {
-    db.User.findOne({
-      where: {
-        id: req.params.id
-      }
-    }).then(function (dbExample) {
-      res.render("example", {
-        example: dbExample
-      });
-    });
-  });
+
 
   // Render 404 page for any unmatched routes
   // app.get("*", function (req, res) {

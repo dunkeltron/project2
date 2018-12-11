@@ -10,9 +10,11 @@ module.exports = function (app, passport) {
 
 
     // The middleware receives the data from Google and runs the function on Strategy config
-    app.get('/auth/google/callback', passport.authenticate('google'), (req, res) => {
-        res.redirect('/menu');
-    });
+    app.get('/auth/google/callback', passport.authenticate('google', {
+        successRedirect: '/menu',
+        failureRedirect: '/'
+    })
+    );
     // Redirect the user to Facebook for authentication.  When complete,
     // Facebook will redirect the user back to the application at
     //     /auth/facebook/callback

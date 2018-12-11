@@ -4,13 +4,12 @@ const express = require('express');
 const app = express();
 const passport = require('passport');
 var db = require("./models/");
-var https = require("https");
 const GoogleStrategy = require('passport-google-oauth20');
 const cookieSession = require('cookie-session');
 
 var exphbs = require("express-handlebars");
 
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 8080;
 // cookieSession config
 app.use(cookieSession({
     maxAge: 24 * 60 * 60 * 1000, // One day in milliseconds
@@ -44,9 +43,9 @@ require("./routes/authRoutes")(app,passport);
 
 // google Strategy config
 passport.use(new GoogleStrategy({
-        clientID: '80481251698-gjc9859qica9mdfdp58qo1dnofa0tjmn.apps.googleusercontent.com',
-        clientSecret: 'Buf9mfJiMoTOjwVE3QUrWcGY',
-        callbackURL: 'http://localhost:3000/auth/google/callback'
+        clientID: process.env.GOOGLE_ID,
+        clientSecret: process.env.GOOGLE_SECRET,
+        callbackURL: "http://localhost:8080/auth/google/callback"
     },
     (accessToken, refreshToken, profile, done) => {
         //log the user profile so we know the user has the information we need
